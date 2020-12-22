@@ -99,8 +99,8 @@ class Main extends React.Component {
 	constructor() {
 		super();
 		this.speed = 100;
-		this.rows = 30;
-		this.cols = 50;
+		this.rows = 50;
+		this.cols = 70;
 
 		this.state = {
 			generation: 0,
@@ -210,7 +210,7 @@ class Main extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>John Conway's Game of Life</h1>
+				<h1 class="pt-3">John Conway's Game of Life</h1>
 				<Buttons
 					playButton={this.playButton}
 					pauseButton={this.pauseButton}
