@@ -66,19 +66,19 @@ class Buttons extends React.Component {
 						Play
 					</button>
 					<button className="btn btn-default" onClick={this.props.pauseButton}>
-					  Pause
+						Pause
 					</button>
 					<button className="btn btn-default" onClick={this.props.clear}>
-					  Clear
-					</button>
-					<button className="btn btn-default" onClick={this.props.slow}>
-					  Slow
-					</button>
-					<button className="btn btn-default" onClick={this.props.fast}>
-					  Fast
+					  	Clear
 					</button>
 					<button className="btn btn-default" onClick={this.props.seed}>
-					  Seed
+					  	Seed
+					</button>
+					<button className="btn btn-default" onClick={this.props.slower}>
+					  	Slower
+					</button>
+					<button className="btn btn-default" onClick={this.props.faster}>
+					  	Faster
 					</button>
 					<DropdownButton
 						title="Grid Size"
@@ -98,7 +98,7 @@ class Buttons extends React.Component {
 class Main extends React.Component {
 	constructor() {
 		super();
-		this.speed = 100;
+		this.speed = 160;
 		this.rows = 50;
 		this.cols = 70;
 
@@ -139,13 +139,13 @@ class Main extends React.Component {
 		clearInterval(this.intervalId);
 	}
 
-	slow = () => {
-		this.speed = 500;
+	slower = () => {
+		this.speed = Math.min(520, this.speed + 40);
 		this.playButton();
 	}
 
-	fast = () => {
-		this.speed = 100;
+	faster = () => {
+		this.speed = Math.max(40, this.speed - 40);
 		this.playButton();
 	}
 
@@ -202,10 +202,10 @@ class Main extends React.Component {
 
 	}
 
-	// componentDidMount() {
-	// 	this.seed();
-	// 	this.playButton();
-	// }
+	componentDidMount() {
+		this.seed();
+		this.playButton();
+	}
 
 	render() {
 		return (
@@ -214,10 +214,10 @@ class Main extends React.Component {
 				<Buttons
 					playButton={this.playButton}
 					pauseButton={this.pauseButton}
-					slow={this.slow}
-					fast={this.fast}
 					clear={this.clear}
 					seed={this.seed}
+					slower={this.slower}
+					faster={this.faster}
 					gridSize={this.gridSize}
 				/>
 				<Grid
